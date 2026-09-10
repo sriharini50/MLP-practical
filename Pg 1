@@ -1,0 +1,41 @@
+# i) Check whether a given number is prime or non-prime
+
+n = int(input("Enter a number: "))
+c = 0
+
+for i in range(1, n + 1):
+    if n % i == 0:
+        c += 1
+
+if c == 2:
+    print(n, "It is a Prime Number")
+else:
+    print(n, "It is not a Prime Number")
+
+
+
+
+
+# ii) Prime numbers within an interval using for loop
+
+for i in range(1, 101):
+    c = 0
+    for j in range(1, i + 1):
+        if i % j == 0:
+            c += 1
+    if c == 2:
+        print(i)
+
+
+
+iii) Prime numbers within an interval using while loop
+
+i = 1
+while i < 100:
+    i += 1
+    c = 0
+    for j in range(1, i + 1):
+        if i % j == 0:
+            c += 1
+    if c == 2:
+        print(i)
