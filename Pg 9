@@ -1,0 +1,85 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import plot_tree
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import classification_report
+
+# Read dataset
+df = pd.read_csv("credit_data.csv")
+
+print("Dataset:")
+print(df)
+
+# Convert categorical columns into numerical columns
+df = pd.get_dummies(
+    df,
+    columns=["Education", "Employment", "Property"],
+    drop_first=True
+)
+
+print("\nEncoded Dataset:")
+print(df)
+
+# Separate input and output
+X = df.drop("Credit", axis=1)
+y = df["Credit"]
+
+# Split dataset
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.2,
+    random_state=42
+)
+
+# Create Decision Tree
+model = DecisionTreeClassifier(
+    criterion="gini",
+    random_state=42
+)
+
+# Train model
+model.fit(X_train, y_train)
+
+# Prediction
+y_pred = model.predict(X_test)
+
+# Accuracy
+accuracy = accuracy_score(y_test, y_pred)
+
+print("\nTest Accuracy:", accuracy)
+
+# Confusion Matrix
+print("\nConfusion Matrix:")
+
+print(confusion_matrix(
+    y_test,
+    y_pred,
+    labels=[0, 1]
+))
+
+# Classification Report
+print("\nClassification Report:")
+
+print(classification_report(
+    y_test,
+    y_pred
+))
+
+# Display Decision Tree
+plt.figure(figsize=(16, 10))
+
+plot_tree(
+    model,
+    feature_names=X.columns,
+    class_names=["Bad Credit", "Good Credit"],
+    filled=True
+)
+
+plt.title("Decision Tree - Credit Classification")
+
+plt.show()
