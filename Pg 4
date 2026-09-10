@@ -1,0 +1,42 @@
+# CODING 1 (CREATING A DICTIONARY)
+d1 = {1: "apple", 2: "orange"}
+print(d1)
+
+d2 = {"name": "kavi", "age": 19, "qualification": "AIML"}
+print(d2)
+
+# CODING 2 (ACCESSING A VALUE IN DICTIONARY)
+d2 = {"name": "kavi", "age": 19, "qualification": "AIML"}
+print(d2["name"])
+print(d2["age"])
+
+# CODING 3 (ADDING A NEW KEY:VALUE PAIR)
+d2 = {"name": "kavi", "age": 19, "qualification": "AIML"}
+d2["city"] = "coimbatore"
+print(d2)
+
+# CODING 4 (UPDATING AN EXISTING VALUE)
+d2 = {"name": "kavi", "age": 19, "qualification": "AIML"}
+d2["age"] = 20
+print(d2)
+
+# CODING 5 (DELETING A KEY:VALUE PAIR)
+d2 = {"name": "kavi", "age": 19, "qualification": "AIML"}
+del d2["age"]
+print(d2)
+
+d2 = {"name": "kavi", "age": 19, "qualification": "AIML"}
+d2.pop("qualification")
+print(d2)
+
+# CODING 6 (DISPLAYING ALL KEYS, VALUES AND KEY:VALUE PAIRS)
+d2 = {"name": "kavi", "age": 19, "qualification": "AIML"}
+print(d2.keys())
+print(d2.values())
+print(d2.items())
+
+# CODING 7 (TRAVERSING THE DICTIONARY)
+d3 = {"name": "kavi", "age": 19, "gender": "male", "qualification": "AIML"}
+
+for i, j in d3.items():
+    print(i, ":", j)
