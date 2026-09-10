@@ -1,0 +1,84 @@
+a = "Kavi"
+b = "Kavi"
+
+c = """
+Python is a high-level, general-purpose programming language known for its
+readability and versatility.
+"""
+
+d = '''Python uses
+whitespace indentation, rather than curly brackets or keywords, to delimit
+blocks.'''
+
+print(a)
+print(b)
+print(c)
+print(d)
+
+# CODING 2 (STRING SLICING 01)
+x = "Python programming"
+
+print(x[1:2])
+print(x[1:3])
+print(x[1:4])
+print(x[1:5])
+print(x[1:6])
+print(x[1:7])
+print(x[1:8])
+
+# CODING 3 (STRING SLICING 02)
+x = "Python programming"
+
+print(x[1:])
+print(x[0:])
+print(x[:6])
+print(x[-1])
+print(x[-1:])
+
+# CODING 4 (STRING SLICING 03)
+x = "Python programming"
+
+print(x[-6:])
+print(x[-6:2:-2])
+print(x[-6::-2])
+print(x[2::8])
+
+# CODING 5 (LOOPING IN STRING)
+for i in "Python":
+    print(i)
+
+# CODING 6 (USING STRING METHODS)
+s = "Artificial Intelligence and Machine Learning"
+
+print(s.upper())
+print(s.lower())
+print(s.find("Machine"))
+print(s.replace("Intelligence", "Foundation"))
+print(len(s))
+
+# CODING 7 (STRING CONCATENATION AND REPETITION)
+a = "Hello"
+b = "Students"
+
+print(a + b)
+print(a * 2)
+
+# CODING 8 (USER-DEFINED FUNCTIONS FOR STRING OPERATION)
+def string_length(s):
+    return len(s)
+
+def to_upper(s):
+    return s.upper()
+
+def to_lower(s):
+    return s.lower()
+
+def reverse_string(s):
+    return s[::-1]
+
+text = input("Enter a string:")
+
+print("Length of the string:", string_length(text))
+print("Upper case:", to_upper(text))
+print("Lower case:", to_lower(text))
+print("Reversed String:", reverse_string(text))
