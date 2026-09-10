@@ -1,0 +1,72 @@
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import classification_report
+
+# 1. Read the dataset
+df = pd.read_csv("credit_data.csv")
+print("Original Dataset:")
+print(df)
+
+# 2. Encode categorical columns
+df = pd.get_dummies(
+    df,
+    columns=["Education", "Employment", "Property"],
+    drop_first=True
+)
+
+print("\nEncoded Dataset:")
+print(df)
+
+# 3. Separate input and output
+X = df.drop("Credit", axis=1)
+y = df["Credit"]
+
+# 4. Split dataset into training and testing
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.2,
+    random_state=42
+)
+
+# 5. Create Logistic Regression model
+model = LogisticRegression(max_iter=1000)
+
+# 6. Train the model
+model.fit(X_train, y_train)
+
+# 7. Predict test data
+y_pred = model.predict(X_test)
+
+# 8. Display actual and predicted values
+print("\nActual Values:")
+print(y_test.values)
+
+print("\nPredicted Values:")
+print(y_pred)
+
+# 9. Calculate accuracy
+accuracy = accuracy_score(y_test, y_pred)
+print("\nTest Accuracy:", accuracy)
+
+# 10. Confusion Matrix
+print("\nConfusion Matrix:")
+print(confusion_matrix(y_test, y_pred, labels=[0, 1]))
+
+# 11. Classification Report
+print("\nClassification Report:")
+print(classification_report(
+    y_test,
+    y_pred,
+    labels=[0, 1],
+    zero_division=0
+))
+
+# 12. Predict probabilities
+y_probability = model.predict_proba(X_test)
+
+print("\nPredicted Probabilities:")
+print(y_probability)
